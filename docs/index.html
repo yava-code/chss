@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CHSS - Chess Reinforcement Learning</title>
+    <style>
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+            line-height: 1.6;
+            color: #24292e;
+        }
+        h1 {
+            border-bottom: 2px solid #e1e4e8;
+            padding-bottom: 10px;
+        }
+        h2 {
+            margin-top: 24px;
+            border-bottom: 1px solid #e1e4e8;
+            padding-bottom: 8px;
+        }
+        code {
+            background-color: #f6f8fa;
+            padding: 2px 6px;
+            border-radius: 3px;
+            font-family: 'SFMono-Regular', Consolas, 'Liberation Mono', Menlo, monospace;
+        }
+        pre {
+            background-color: #f6f8fa;
+            padding: 16px;
+            border-radius: 6px;
+            overflow-x: auto;
+        }
+        pre code {
+            background-color: transparent;
+            padding: 0;
+        }
+        a {
+            color: #0366d6;
+            text-decoration: none;
+        }
+        a:hover {
+            text-decoration: underline;
+        }
+        .badge {
+            display: inline-block;
+            margin-right: 5px;
+        }
+    </style>
+</head>
+<body>
+    <h1>CHSS - Chess Reinforcement Learning</h1>
+    
+    <p>
+        <img class="badge" src="https://github.com/yava-code/chss/actions/workflows/python-app.yml/badge.svg" alt="Python application">
+        <img class="badge" src="https://img.shields.io/badge/python-3.10+-blue.svg" alt="Python 3.10+">
+        <img class="badge" src="https://img.shields.io/badge/framework-PyTorch-orange.svg" alt="PyTorch">
+    </p>
+
+    <p>
+        My attempt at creating a chess RL model, an analog of AlphaGo. I know that there are already many projects like this, 
+        but I tried to make it on my own for experience and fun.
+    </p>
+
+    <h2>Features</h2>
+    <ul>
+        <li>Neural network architecture with value and policy heads</li>
+        <li>Board state encoding to 17-channel tensor</li>
+        <li>Move encoding/decoding system</li>
+        <li>Comprehensive test suite</li>
+        <li>Docker support for development</li>
+    </ul>
+
+    <h2>Tech Stack</h2>
+    <ul>
+        <li><strong>Language:</strong> Python 3.10+</li>
+        <li><strong>Deep Learning:</strong> PyTorch</li>
+        <li><strong>Chess Engine:</strong> python-chess library</li>
+        <li><strong>Numerical Computing:</strong> NumPy</li>
+        <li><strong>Testing:</strong> pytest</li>
+        <li><strong>Linting:</strong> flake8</li>
+    </ul>
+
+    <h2>Architecture</h2>
+    
+    <h3>Board Representation</h3>
+    <p>The chess board is represented as a 17-channel tensor (17, 8, 8):</p>
+    <ul>
+        <li>12 channels for pieces (6 piece types × 2 colors)</li>
+        <li>1 channel for current turn (1 for white, 0 for black)</li>
+        <li>4 channels for castling rights (kingside/queenside for both colors)</li>
+    </ul>
+
+    <h3>Neural Network</h3>
+    <p>The <code>ChessNet</code> class implements a dual-head architecture:</p>
+    <ul>
+        <li><strong>Value Head:</strong> Outputs a single value (win probability) using Tanh activation</li>
+        <li><strong>Policy Head:</strong> Outputs 4096 move probabilities (64 from squares × 64 to squares) using Softmax</li>
+    </ul>
+
+    <h2>Quick Start</h2>
+    
+    <h3>Using Docker</h3>
+    <pre><code># Run tests
+docker-compose up
+
+# Build and run manually
+docker build -t chss .
+docker run chss</code></pre>
+
+    <h3>Local Installation</h3>
+    <pre><code># Install dependencies
+pip install -r requirements.txt
+
+# Run tests
+pytest -v
+
+# Lint code
+flake8 .</code></pre>
+
+    <h2>Development</h2>
+    <pre><code># Clone the repository
+git clone https://github.com/yava-code/chss.git
+cd chss
+
+# Install dependencies
+pip install -r requirements.txt
+
+# Run tests
+PYTHONPATH=. pytest -v
+
+# Run linting
+flake8 . --count --select=E9,F63,F7,F82 --show-source --statistics</code></pre>
+
+    <h2>Project Structure</h2>
+    <pre><code>chss/
+├── ChessNet.py         # Neural network architecture
+├── translator.py       # Board state and move encoding
+├── main.py            # Example usage
+├── test/              # Test suite
+│   └── test_main.py
+├── requirements.txt   # Python dependencies
+├── Dockerfile        # Docker configuration
+├── docker-compose.yml # Docker Compose setup
+└── .github/
+    └── workflows/
+        └── python-app.yml # CI/CD pipeline</code></pre>
+
+    <h2>Contributing</h2>
+    <p>
+        I hope for your feedbacks and contributions. If you want to collaborate or have any questions, 
+        feel free to reach out - <a href="mailto:vyaseno1@stu.vistula.edu.pl">vyaseno1@stu.vistula.edu.pl</a>
+    </p>
+
+    <h2>Links</h2>
+    <ul>
+        <li><a href="https://github.com/yava-code/chss">GitHub Repository</a></li>
+        <li><a href="https://github.com/yava-code/chss/actions">CI/CD Status</a></li>
+    </ul>
+</body>
+</html>

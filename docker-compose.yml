@@ -1,0 +1,14 @@
+version: '3.8'
+
+services:
+  chss:
+    image: python:3.10-slim
+    container_name: chss-dev
+    working_dir: /app
+    volumes:
+      - .:/app
+    command: >
+      bash -c "pip install -r requirements.txt &&
+               pytest -v"
+    environment:
+      - PYTHONPATH=/app
