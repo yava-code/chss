@@ -6,7 +6,7 @@
 
 My attempt at creating a chess RL model, an analog of AlphaGo. I know that there are already many projects like this, but I tried to make it on my own for experience and fun.
 
-I hope for your feedbacks and contributions. If you want to collaborate or have any questions, feel free to reach out - vyaseno1@stu.vistula.edu.pl
+I hope for your feedback and contributions. If you want to collaborate or have any questions, feel free to reach out - vyaseno1@stu.vistula.edu.pl
 
 ## Features
 
