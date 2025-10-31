@@ -7,7 +7,7 @@ class ChessNet(nn.Module):
         super().__init__() #always need to call super().__init__()
         self.conv1 = nn.Conv2d(17, 20, 5) #will return (20, 4, 4)
         self.value_head = nn.Linear(320, 1) #so we need to flatten (20,4,4) to (320)
-        self.policy_head = nn.Linear(320, 100)
+        self.policy_head = nn.Linear(320, 4096)
         self.tan1 = nn.Tanh()
         self.softmax = nn.Softmax(dim=1)
 
