@@ -1,0 +1,5 @@
+chess==1.11.2
+numpy==2.3.4
+torch==2.9.0
+pytest==8.4.2
+flake8==7.3.0
